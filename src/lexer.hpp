@@ -79,7 +79,7 @@ namespace lexer
             push_keyword("dec", token_type::_dec);
             push_keyword("string", token_type::_string);
             push_keyword("bool", token_type::_bool);
-            push_keyword("mut", token_type::_const);
+            push_keyword("const", token_type::_const);
             push_keyword("null", token_type::_null);
             push_keyword("fn", token_type::_fn);
             push_keyword("if", token_type::_if);
@@ -88,7 +88,7 @@ namespace lexer
             push_keyword("true", token_type::_true);
             push_keyword("false", token_type::_false);
             push_keyword("return", token_type::_return);
-
+            
             push_operator('+', token_type::plus);
             push_operator('-', token_type::dash);
             push_operator('*', token_type::asterik);
@@ -96,14 +96,17 @@ namespace lexer
             push_operator('%', token_type::percent);
             push_operator('=', token_type::assign);
             push_operator('!', token_type::exclaimation);
-
+            
             push_symbol(";", token_type::semicolon);
+            push_symbol(":", token_type::colon);
             push_symbol("(", token_type::o_paren);
             push_symbol(")", token_type::c_paren);
             push_symbol("{", token_type::o_curly);
             push_symbol("}", token_type::c_curly);
             push_symbol("[", token_type::o_brack);
             push_symbol("]", token_type::c_brack);
+            push_symbol(".", token_type::dot);
+            push_symbol(",", token_type::comma);
             push_symbol("?", token_type::question);
 
             if ((isalpha(buffer.front()) || buffer.front() == '_') && (!isalnum(next_char) && next_char != '_') && !in_quotes)
