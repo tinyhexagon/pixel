@@ -104,7 +104,40 @@ namespace lexer
             push_operator('%', token_type::percent);
             push_operator('=', token_type::assign);
             push_operator('!', token_type::exclaimation);
-            get_number();
+
+            push_keyword("print", token_type::_print);
+            push_keyword("int", token_type::_int);
+            push_keyword("dec", token_type::_dec);
+            push_keyword("string", token_type::_string);
+            push_keyword("bool", token_type::_bool);
+            push_keyword("mut", token_type::_const);
+            push_keyword("null", token_type::_null);
+            push_keyword("fn", token_type::_fn);
+            push_keyword("if", token_type::_if);
+            push_keyword("for", token_type::_for);
+            push_keyword("while", token_type::_while);
+            push_keyword("true", token_type::_true);
+            push_keyword("false", token_type::_false);
+            push_keyword("return", token_type::_return);
+
+            push_symbol(";", token_type::semicolon);
+            push_symbol("(", token_type::o_paren);
+            push_symbol(")", token_type::c_paren);
+            push_symbol("{", token_type::o_curly);
+            push_symbol("}", token_type::c_curly);
+            push_symbol("[", token_type::o_brack);
+            push_symbol("]", token_type::c_brack);
+            push_symbol("?", token_type::question);
+
+            if ((isalpha(buffer.front()) || buffer.front() == '_') && (!isalnum(next_char) && next_char != '_') && !in_quotes)
+            {
+                push_token(token_type::identifier, buffer);
+            }
+
+            if (isdigit(buffer.front()) && !isdigit(next_char) && next_char != '.')
+            {
+                push_token(token_type::numeric_literal, buffer);
+            }
         }
 
         push_token(token_type::eof, "");
@@ -112,22 +145,7 @@ namespace lexer
 
 };
 
-// keywords
 /*
-pushKeyword("print", token_type::_print);
-pushKeyword("int", token_type::_int);
-pushKeyword("dec", token_type::_dec);
-pushKeyword("string", token_type::_string);
-pushKeyword("bool", token_type::_bool);
-pushKeyword("mut", token_type::_mut);
-pushKeyword("null", token_type::_null);
-pushKeyword("fn", token_type::_fn);
-pushKeyword("if", token_type::_if);
-pushKeyword("for", token_type::_for);
-pushKeyword("while", token_type::_while);
-pushKeyword("true", token_type::_true);
-pushKeyword("false", token_type::_false);
-pushKeyword("return", token_type::_return);
 
 // operators
 
@@ -135,21 +153,4 @@ pushTwoCharOperator('=', '=', token_type::equals);
 pushTwoCharOperator('*', '*', token_type::exponentiation);
 pushTwoCharOperator('+', '+', token_type::increment);
 
-// symbols
-
-pushSymbol(";", token_type::semicolon);
-pushSymbol("(", token_type::o_paren);
-pushSymbol(")", token_type::c_paren);
-pushSymbol("{", token_type::o_curly);
-pushSymbol("}", token_type::c_curly);
-pushSymbol("[", token_type::o_brack);
-pushSymbol("]", token_type::c_brack);
-pushSymbol("?", token_type::question);
-
-// identifiers
-
-if ((isalpha(buffer.front()) || buffer.front() == '_') && (!isalnum(nextChar) && nextChar != '_') && !in_quotes)
-{
-    pushToken(token_type::ident, buffer);
-}
 */
