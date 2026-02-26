@@ -5,7 +5,7 @@ int main(int argc, char **argv)
 {
     if (argc < 2)
     {
-        std::cout << "\033[31mNo arguments provided.\033[0m\n";
+        cout << "\033[31mNo arguments provided.\033[0m\n";
         return RUN_FAIL;
     }
 
@@ -13,13 +13,13 @@ int main(int argc, char **argv)
 
     if (!fs::exists(source_path))
     {
-        std::cout << "\033[31mFile does not exist.\033[0m\n";
+        cout << "\033[31mFile does not exist.\033[0m\n";
         return RUN_FAIL;
     }
 
     if (source_path.extension().string() != ".pixel")
     {
-        std::cout << "\033[31mWrong file extension.\033[0m\n";
+        cout << "\033[31mWrong file extension.\033[0m\n";
         return RUN_FAIL;
     }
 
@@ -27,10 +27,133 @@ int main(int argc, char **argv)
 
     lexer::lex_file(source_file);
 
-    for (token tk : lexer::tokens)
+    cout << "Token Type\tValue\n";
+    cout << "-----------------------\n";
+
+    for (const token &tk : lexer::tokens)
     {
-        std::cout << tk.type << '\t';
-        std::cout << tk.value << '\n';
+        switch (tk.type)
+        {
+        case token_type::numeric_literal:
+            cout << "number  \t";
+            break;
+        case token_type::string_literal:
+            cout << "string  \t";
+            break;
+
+        case token_type::plus:
+            cout << "operator \t+";
+            break;
+        case token_type::dash:
+            cout << "operator \t-";
+            break;
+        case token_type::asterik:
+            cout << "operator \t*";
+            break;
+        case token_type::slash:
+            cout << "operator \t/";
+            break;
+        case token_type::percent:
+            cout << "operator \t%";
+            break;
+        case token_type::assign:
+            cout << "operator \t=";
+            break;
+        case token_type::exclaimation:
+            cout << "operator \t!";
+            break;
+        case token_type::identifier:
+            cout << "identifier \t";
+            break;
+
+        case token_type::_print:
+            cout << "keyword \tprint";
+            break;
+        case token_type::_int:
+            cout << "keyword \tint";
+            break;
+        case token_type::_dec:
+            cout << "keyword \tdec";
+            break;
+        case token_type::_string:
+            cout << "keyword \tstring";
+            break;
+        case token_type::_bool:
+            cout << "keyword \tbool";
+            break;
+        case token_type::_const:
+            cout << "keyword \tconst";
+            break;
+        case token_type::_null:
+            cout << "keyword \tnull";
+            break;
+        case token_type::_if:
+            cout << "keyword \tif";
+            break;
+        case token_type::_for:
+            cout << "keyword \tfor";
+            break;
+        case token_type::_while:
+            cout << "keyword \twhile";
+            break;
+        case token_type::_fn:
+            cout << "keyword \tfn";
+            break;
+        case token_type::_true:
+            cout << "keyword \ttrue";
+            break;
+        case token_type::_false:
+            cout << "keyword \tfalse";
+            break;
+        case token_type::_return:
+            cout << "keyword \treturn";
+            break;
+
+        case token_type::semicolon:
+            cout << "symbol  \t;";
+            break;
+        case token_type::colon:
+            cout << "symbol  \t:";
+            break;
+        case token_type::o_paren:
+            cout << "symbol  \t(";
+            break;
+        case token_type::c_paren:
+            cout << "symbol  \t)";
+            break;
+        case token_type::o_curly:
+            cout << "symbol  \t{";
+            break;
+        case token_type::c_curly:
+            cout << "symbol  \t}";
+            break;
+        case token_type::o_brack:
+            cout << "symbol  \t[";
+            break;
+        case token_type::c_brack:
+            cout << "symbol  \t]";
+            break;
+        case token_type::dot:
+            cout << "symbol  \t.";
+            break;
+        case token_type::comma:
+            cout << "symbol  \t,";
+            break;
+        case token_type::question:
+            cout << "symbol  \t?";
+            break;
+
+        case token_type::eof:
+            cout << "<EOF>\t";
+            break;
+
+        default:
+            cout << "<unknown token type: " << static_cast<int>(tk.type) << ">\t";
+            break;
+        }
+
+        std::cout << tk.value << "\n";
+        cout << "-----------------------\n";
     }
 
     source_file.close();

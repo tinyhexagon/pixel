@@ -11,7 +11,7 @@ using std::cout, std::ifstream, std::vector, std::string;
 
 namespace fs = std::filesystem;
 
-enum token_type
+enum class token_type
 {
 
     // literals

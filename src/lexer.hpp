@@ -40,6 +40,7 @@ namespace lexer
         }
     }
 
+    /*
     void push_two_char_operator(char firstChar, char lastChar, token_type type)
     {
         if ((buffer.front() == firstChar && buffer.back() == lastChar) && buffer.length() == 2)
@@ -47,31 +48,7 @@ namespace lexer
             push_token(type, "");
         }
     }
-
-    int get_number()
-    {
-
-        if (buffer.empty())
-        {
-            return RUN_FAIL;
-        }
-
-        for (char c : buffer)
-        {
-            if (!isdigit(c) && c != '.')
-            {
-                return RUN_FAIL;
-            }
-        }
-
-        if (!isdigit(next_char) && next_char != '.')
-        {
-            push_token(numeric_literal, buffer);
-            return RUN_SUCCESS;
-        }
-
-        return RUN_SUCCESS;
-    }
+    */
 
     void lex_file(ifstream &source_file)
     {
@@ -97,14 +74,6 @@ namespace lexer
                 quotes = 0;
             }
 
-            push_operator('+', token_type::plus);
-            push_operator('-', token_type::dash);
-            push_operator('*', token_type::asterik);
-            push_operator('/', token_type::slash);
-            push_operator('%', token_type::percent);
-            push_operator('=', token_type::assign);
-            push_operator('!', token_type::exclaimation);
-
             push_keyword("print", token_type::_print);
             push_keyword("int", token_type::_int);
             push_keyword("dec", token_type::_dec);
@@ -119,6 +88,14 @@ namespace lexer
             push_keyword("true", token_type::_true);
             push_keyword("false", token_type::_false);
             push_keyword("return", token_type::_return);
+
+            push_operator('+', token_type::plus);
+            push_operator('-', token_type::dash);
+            push_operator('*', token_type::asterik);
+            push_operator('/', token_type::slash);
+            push_operator('%', token_type::percent);
+            push_operator('=', token_type::assign);
+            push_operator('!', token_type::exclaimation);
 
             push_symbol(";", token_type::semicolon);
             push_symbol("(", token_type::o_paren);
@@ -144,13 +121,3 @@ namespace lexer
     }
 
 };
-
-/*
-
-// operators
-
-pushTwoCharOperator('=', '=', token_type::equals);
-pushTwoCharOperator('*', '*', token_type::exponentiation);
-pushTwoCharOperator('+', '+', token_type::increment);
-
-*/
