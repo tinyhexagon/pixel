@@ -40,7 +40,6 @@ int main(int argc, char **argv)
         case token_type::string_literal:
             cout << "string  \t";
             break;
-
         case token_type::plus:
             cout << "operator \t+";
             break;
@@ -59,13 +58,12 @@ int main(int argc, char **argv)
         case token_type::assign:
             cout << "operator \t=";
             break;
-        case token_type::exclaimation:
+        case token_type::logical_not:
             cout << "operator \t!";
             break;
         case token_type::identifier:
             cout << "identifier \t";
             break;
-
         case token_type::_print:
             cout << "keyword \tprint";
             break;
@@ -108,7 +106,6 @@ int main(int argc, char **argv)
         case token_type::_return:
             cout << "keyword \treturn";
             break;
-
         case token_type::semicolon:
             cout << "symbol  \t;";
             break;
@@ -142,6 +139,24 @@ int main(int argc, char **argv)
         case token_type::question:
             cout << "symbol  \t?";
             break;
+        case token_type::increment:
+            cout << "operator  \t++";
+            break;
+        case token_type::decrement:
+            cout << "operator  \t--";
+            break;
+        case token_type::greater:
+            cout << "operator  \t>";
+            break;
+        case token_type::less:
+            cout << "operator  \t<";
+            break;
+        case token_type::greater_eq:
+            cout << "operator  \t<=";
+            break;
+        case token_type::less_eq:
+            cout << "operator  \t>=";
+            break;
 
         case token_type::eof:
             cout << "<EOF>\t";
@@ -152,7 +167,7 @@ int main(int argc, char **argv)
             break;
         }
 
-        std::cout << tk.value << "\n";
+        cout << tk.value << "\n";
         cout << "-----------------------\n";
     }
 

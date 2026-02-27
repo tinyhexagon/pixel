@@ -34,21 +34,19 @@ namespace lexer
 
     void push_operator(char _operator, token_type type)
     {
-        if ((buffer.front() == _operator && buffer.back() == _operator) && _operator != next_char && buffer.length() == 1)
+        if (current_char == _operator && next_char == ' ' && buffer.length() == 1)
         {
             push_token(type, "");
         }
     }
 
-    /*
-    void push_two_char_operator(char firstChar, char lastChar, token_type type)
+    void push_two_char_operator(char first_char, char second_char, token_type type)
     {
-        if ((buffer.front() == firstChar && buffer.back() == lastChar) && buffer.length() == 2)
+        if (buffer.front() == first_char && buffer.back() == second_char && buffer.length() == 2)
         {
             push_token(type, "");
         }
     }
-    */
 
     void lex_file(ifstream &source_file)
     {
@@ -60,6 +58,10 @@ namespace lexer
             {
                 buffer.push_back(current_char);
             }
+
+            /* Debug */
+            // cout << "Buffer: \t" << buffer << '\n';
+            // cout << "Next char: \t" << next_char << '\n';
 
             if (current_char == '"' && buffer.front() == '"' || current_char == '\'' && buffer.front() == '\'')
             {
@@ -88,15 +90,22 @@ namespace lexer
             push_keyword("true", token_type::_true);
             push_keyword("false", token_type::_false);
             push_keyword("return", token_type::_return);
-            
+
             push_operator('+', token_type::plus);
             push_operator('-', token_type::dash);
             push_operator('*', token_type::asterik);
             push_operator('/', token_type::slash);
             push_operator('%', token_type::percent);
             push_operator('=', token_type::assign);
-            push_operator('!', token_type::exclaimation);
-            
+            push_operator('>', token_type::greater);
+            push_operator('<', token_type::less);
+            push_operator('!', token_type::logical_not);
+
+            push_two_char_operator('+', '+', token_type::increment);
+            push_two_char_operator('-', '-', token_type::decrement);
+            push_two_char_operator('>', '=', token_type::greater_eq);
+            push_two_char_operator('<', '=', token_type::less_eq);
+
             push_symbol(";", token_type::semicolon);
             push_symbol(":", token_type::colon);
             push_symbol("(", token_type::o_paren);

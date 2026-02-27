@@ -24,7 +24,18 @@ enum class token_type
     slash,
     percent,
     assign,
-    exclaimation,
+
+    greater,
+    less,
+
+    logical_not,
+    logical_and,
+    logical_or,
+
+    increment,
+    decrement,
+    greater_eq,
+    less_eq,
 
     identifier,
 
