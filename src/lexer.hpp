@@ -60,8 +60,8 @@ namespace lexer
             }
 
             /* Debug */
-            // print "Buffer: \t" << buffer << '\n';
-            // print "Next char: \t" << next_char << '\n';
+            // cout << "Buffer: \t" << buffer << '\n';
+            // cout << "Next char: \t" << next_char << '\n';
 
             if (current_char == '"' && buffer.front() == '"' || current_char == '\'' && buffer.front() == '\'')
             {
@@ -164,138 +164,179 @@ namespace lexer
         switch (type)
         {
         case token_type::numeric_literal:
-            print "number  \t";
+            print("number  \t");
             break;
+
         case token_type::string_literal:
-            print "string  \t";
+            print("string  \t");
             break;
+
         case token_type::plus:
-            print "operator \t+";
+            print("operator \t+");
             break;
+
         case token_type::dash:
-            print "operator \t-";
+            print("operator \t-");
             break;
+
         case token_type::asterik:
-            print "operator \t*";
+            print("operator \t*");
             break;
+
         case token_type::slash:
-            print "operator \t/";
+            print("operator \t/");
             break;
+
         case token_type::percent:
-            print "operator \t%";
+            print("operator \t%");
             break;
+
         case token_type::assign:
-            print "operator \t=";
+            print("operator \t=");
             break;
+
         case token_type::logical_not:
-            print "operator \t!";
+            print("operator \t!");
             break;
+
         case token_type::identifier:
-            print "identifier \t";
+            print("identifier \t");
             break;
+
         case token_type::_print:
-            print "keyword \tprint";
+            print("keyword \tprint");
             break;
+
         case token_type::_int:
-            print "keyword \tint";
+            print("keyword \tint");
             break;
+
         case token_type::_dec:
-            print "keyword \tdec";
+            print("keyword \tdec");
             break;
+
         case token_type::_string:
-            print "keyword \tstring";
+            print("keyword \tstring");
             break;
+
         case token_type::_bool:
-            print "keyword \tbool";
+            print("keyword \tbool");
             break;
+
         case token_type::_const:
-            print "keyword \tconst";
+            print("keyword \tconst");
             break;
+
         case token_type::_null:
-            print "keyword \tnull";
+            print("keyword \tnull");
             break;
+
         case token_type::_if:
-            print "keyword \tif";
+            print("keyword \tif");
             break;
+
         case token_type::_for:
-            print "keyword \tfor";
+            print("keyword \tfor");
             break;
+
         case token_type::_while:
-            print "keyword \twhile";
+            print("keyword \twhile");
             break;
+
         case token_type::_fn:
-            print "keyword \tfn";
+            print("keyword \tfn");
             break;
+
         case token_type::_true:
-            print "keyword \ttrue";
+            print("keyword \ttrue");
             break;
+
         case token_type::_false:
-            print "keyword \tfalse";
+            print("keyword \tfalse");
             break;
+
         case token_type::_return:
-            print "keyword \treturn";
+            print("keyword \treturn");
             break;
+
         case token_type::semicolon:
-            print "symbol  \t;";
+            print("symbol  \t;");
             break;
+
         case token_type::colon:
-            print "symbol  \t:";
+            print("symbol  \t:");
             break;
+
         case token_type::o_paren:
-            print "symbol  \t(";
+            print("symbol  \t(");
             break;
+
         case token_type::c_paren:
-            print "symbol  \t)";
+            print("symbol  \t)");
             break;
+
         case token_type::o_curly:
-            print "symbol  \t{";
+            print("symbol  \t{{");
             break;
+
         case token_type::c_curly:
-            print "symbol  \t}";
+            print("symbol  \t}}");
             break;
+
         case token_type::o_brack:
-            print "symbol  \t[";
+            print("symbol  \t[");
             break;
+
         case token_type::c_brack:
-            print "symbol  \t]";
+            print("symbol  \t]");
             break;
+
         case token_type::dot:
-            print "symbol  \t.";
+            print("symbol  \t.");
             break;
+
         case token_type::comma:
-            print "symbol  \t,";
+            print("symbol  \t,");
             break;
+
         case token_type::question:
-            print "symbol  \t?";
+            print("symbol  \t?");
             break;
+
         case token_type::increment:
-            print "operator  \t++";
+            print("operator \t++");
             break;
+
         case token_type::decrement:
-            print "operator  \t--";
+            print("operator \t--");
             break;
+
         case token_type::greater:
-            print "operator  \t>";
+            print("operator \t>");
             break;
+
         case token_type::less:
-            print "operator  \t<";
+            print("operator \t<");
             break;
+
         case token_type::greater_eq:
-            print "operator  \t<=";
+            print("operator \t>=");
             break;
+
         case token_type::less_eq:
-            print "operator  \t>=";
+            print("operator \t<=");
             break;
+
         case token_type::unary:
-            print "unary \t\t(-)";
+            print("unary \t\t(-)");
             break;
 
         case token_type::eof:
-            print "<EOF>\t";
+            print("<EOF> \t");
             break;
 
         default:
-            print "<unknown token type: " << static_cast<int>(type) << ">\t";
+            print("<unknown token type: {}>\t", static_cast<int>(type));
             break;
         }
     }

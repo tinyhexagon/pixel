@@ -1,14 +1,14 @@
 #pragma once
 #include <iostream>
+#include <print>
 #include <fstream>
 #include <filesystem>
 #include <vector>
 
 #define RUN_SUCCESS 0
 #define RUN_FAIL 1
-#define print cout <<
 
-using std::cout, std::ifstream, std::vector, std::string;
+using std::ifstream, std::vector, std::string, std::print;
 
 namespace fs = std::filesystem;
 

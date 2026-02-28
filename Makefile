@@ -1,2 +1,2 @@
 default:
-	g++ src/compiler.cc -o C:/pixel/bin/pixelc.exe
+	g++ -std=c++23 src/compiler.cc -lstdc++exp -o C:/pixel/bin/pixelc.exe
