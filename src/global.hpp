@@ -6,6 +6,10 @@
 
 #define RUN_SUCCESS 0
 #define RUN_FAIL 1
+#define print cout <<
+#define bbreak \
+    ;          \
+    break
 
 using std::cout, std::ifstream, std::vector, std::string;
 
@@ -33,8 +37,6 @@ enum class token_type
     logical_not,
     logical_and,
     logical_or,
-
-    e,
 
     increment,
     decrement,

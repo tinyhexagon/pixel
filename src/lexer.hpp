@@ -54,14 +54,14 @@ namespace lexer
         {
             next_char = source_file.peek();
 
-            if (!std::isspace(current_char) || in_quotes)
+            if (!isspace(current_char) || in_quotes)
             {
                 buffer.push_back(current_char);
             }
 
             /* Debug */
-            // cout << "Buffer: \t" << buffer << '\n';
-            // cout << "Next char: \t" << next_char << '\n';
+            // print "Buffer: \t" << buffer << '\n';
+            // print "Next char: \t" << next_char << '\n';
 
             if (current_char == '"' && buffer.front() == '"' || current_char == '\'' && buffer.front() == '\'')
             {
@@ -139,14 +139,14 @@ namespace lexer
 
     void process_tokens()
     {
-        std::vector<token> new_tokens;
+        vector<token> new_tokens;
         new_tokens.reserve(tokens.size());
 
         for (int i = 0; i < tokens.size(); i++)
         {
             if (i + 1 < tokens.size() && tokens[i].type == token_type::unary && tokens[i + 1].type == token_type::numeric_literal)
             {
-                std::string value = "-" + tokens[i + 1].value;
+                string value = "-" + tokens[i + 1].value;
                 new_tokens.push_back({.type = token_type::numeric_literal, .value = std::move(value)});
 
                 i++;
@@ -164,140 +164,95 @@ namespace lexer
         switch (type)
         {
         case token_type::numeric_literal:
-            cout << "number  \t";
-            break;
+            print "number  \t" bbreak;
         case token_type::string_literal:
-            cout << "string  \t";
-            break;
+            print "string  \t" bbreak;
         case token_type::plus:
-            cout << "operator \t+";
-            break;
+            print "operator \t+" bbreak;
         case token_type::dash:
-            cout << "operator \t-";
-            break;
+            print "operator \t-" bbreak;
         case token_type::asterik:
-            cout << "operator \t*";
-            break;
+            print "operator \t*" bbreak;
         case token_type::slash:
-            cout << "operator \t/";
-            break;
+            print "operator \t/" bbreak;
         case token_type::percent:
-            cout << "operator \t%";
-            break;
+            print "operator \t%" bbreak;
         case token_type::assign:
-            cout << "operator \t=";
-            break;
+            print "operator \t=" bbreak;
         case token_type::logical_not:
-            cout << "operator \t!";
-            break;
+            print "operator \t!" bbreak;
         case token_type::identifier:
-            cout << "identifier \t";
-            break;
+            print "identifier \t" bbreak;
         case token_type::_print:
-            cout << "keyword \tprint";
-            break;
+            print "keyword \tprint" bbreak;
         case token_type::_int:
-            cout << "keyword \tint";
-            break;
+            print "keyword \tint" bbreak;
         case token_type::_dec:
-            cout << "keyword \tdec";
-            break;
+            print "keyword \tdec" bbreak;
         case token_type::_string:
-            cout << "keyword \tstring";
-            break;
+            print "keyword \tstring" bbreak;
         case token_type::_bool:
-            cout << "keyword \tbool";
-            break;
+            print "keyword \tbool" bbreak;
         case token_type::_const:
-            cout << "keyword \tconst";
-            break;
+            print "keyword \tconst" bbreak;
         case token_type::_null:
-            cout << "keyword \tnull";
-            break;
+            print "keyword \tnull" bbreak;
         case token_type::_if:
-            cout << "keyword \tif";
-            break;
+            print "keyword \tif" bbreak;
         case token_type::_for:
-            cout << "keyword \tfor";
-            break;
+            print "keyword \tfor" bbreak;
         case token_type::_while:
-            cout << "keyword \twhile";
-            break;
+            print "keyword \twhile" bbreak;
         case token_type::_fn:
-            cout << "keyword \tfn";
-            break;
+            print "keyword \tfn" bbreak;
         case token_type::_true:
-            cout << "keyword \ttrue";
-            break;
+            print "keyword \ttrue" bbreak;
         case token_type::_false:
-            cout << "keyword \tfalse";
-            break;
+            print "keyword \tfalse" bbreak;
         case token_type::_return:
-            cout << "keyword \treturn";
-            break;
+            print "keyword \treturn" bbreak;
         case token_type::semicolon:
-            cout << "symbol  \t;";
-            break;
+            print "symbol  \t;" bbreak;
         case token_type::colon:
-            cout << "symbol  \t:";
-            break;
+            print "symbol  \t:" bbreak;
         case token_type::o_paren:
-            cout << "symbol  \t(";
-            break;
+            print "symbol  \t(" bbreak;
         case token_type::c_paren:
-            cout << "symbol  \t)";
-            break;
+            print "symbol  \t)" bbreak;
         case token_type::o_curly:
-            cout << "symbol  \t{";
-            break;
+            print "symbol  \t{" bbreak;
         case token_type::c_curly:
-            cout << "symbol  \t}";
-            break;
+            print "symbol  \t}" bbreak;
         case token_type::o_brack:
-            cout << "symbol  \t[";
-            break;
+            print "symbol  \t[" bbreak;
         case token_type::c_brack:
-            cout << "symbol  \t]";
-            break;
+            print "symbol  \t]" bbreak;
         case token_type::dot:
-            cout << "symbol  \t.";
-            break;
+            print "symbol  \t." bbreak;
         case token_type::comma:
-            cout << "symbol  \t,";
-            break;
+            print "symbol  \t," bbreak;
         case token_type::question:
-            cout << "symbol  \t?";
-            break;
+            print "symbol  \t?" bbreak;
         case token_type::increment:
-            cout << "operator  \t++";
-            break;
+            print "operator  \t++" bbreak;
         case token_type::decrement:
-            cout << "operator  \t--";
-            break;
+            print "operator  \t--" bbreak;
         case token_type::greater:
-            cout << "operator  \t>";
-            break;
+            print "operator  \t>" bbreak;
         case token_type::less:
-            cout << "operator  \t<";
-            break;
+            print "operator  \t<" bbreak;
         case token_type::greater_eq:
-            cout << "operator  \t<=";
-            break;
+            print "operator  \t<=" bbreak;
         case token_type::less_eq:
-            cout << "operator  \t>=";
-            break;
+            print "operator  \t>=" bbreak;
         case token_type::unary:
-            cout << "unary \t\t(negative)";
-            break;
+            print "unary \t\t(-)" bbreak;
 
         case token_type::eof:
-            cout << "<EOF>\t";
-            break;
+            print "<EOF>\t" bbreak;
 
         default:
-            cout << "<unknown token type: " << static_cast<int>(type) << ">\t";
-            break;
+            print "<unknown token type: " << static_cast<int>(type) << ">\t" bbreak;
         }
     }
-
 };
