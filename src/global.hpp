@@ -25,6 +25,8 @@ enum class token_type
     percent,
     assign,
 
+    unary,
+
     greater,
     less,
 

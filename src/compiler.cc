@@ -157,6 +157,9 @@ int main(int argc, char **argv)
         case token_type::less_eq:
             cout << "operator  \t>=";
             break;
+        case token_type::unary:
+            cout << "unary \t\t(negative)";
+            break;
 
         case token_type::eof:
             cout << "<EOF>\t";

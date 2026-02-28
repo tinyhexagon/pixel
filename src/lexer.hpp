@@ -34,7 +34,7 @@ namespace lexer
 
     void push_operator(char _operator, token_type type)
     {
-        if (current_char == _operator && next_char == ' ' && buffer.length() == 1)
+        if (buffer.length() == 1 && current_char == _operator && next_char != _operator)
         {
             push_token(type, "");
         }
@@ -42,7 +42,7 @@ namespace lexer
 
     void push_two_char_operator(char first_char, char second_char, token_type type)
     {
-        if (buffer.front() == first_char && buffer.back() == second_char && buffer.length() == 2)
+        if (buffer.length() == 2 && buffer.front() == first_char && buffer.back() == second_char)
         {
             push_token(type, "");
         }
@@ -74,6 +74,11 @@ namespace lexer
                 in_quotes = false;
                 push_token(token_type::string_literal, buffer);
                 quotes = 0;
+            }
+
+            if (current_char == '-' && isdigit(next_char))
+            {
+                push_token(token_type::unary, "");
             }
 
             push_keyword("print", token_type::_print);
@@ -118,18 +123,22 @@ namespace lexer
             push_symbol(",", token_type::comma);
             push_symbol("?", token_type::question);
 
-            if ((isalpha(buffer.front()) || buffer.front() == '_') && (!isalnum(next_char) && next_char != '_') && !in_quotes)
+            if (!buffer.empty() && (isalpha(buffer.front()) || buffer.front() == '_') && (!isalnum(next_char) && next_char != '_') && !in_quotes)
             {
                 push_token(token_type::identifier, buffer);
             }
 
-            if (isdigit(buffer.front()) && !isdigit(next_char) && next_char != '.')
+            if (!buffer.empty() && isdigit(buffer.front()) && !isdigit(next_char) && next_char != '.')
             {
                 push_token(token_type::numeric_literal, buffer);
             }
         }
 
         push_token(token_type::eof, "");
+    }
+
+    void process_tokens()
+    {
     }
 
 };

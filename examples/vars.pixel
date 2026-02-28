@@ -1,0 +1,5 @@
+int x = 4;
+dec pi  3.14;
+string name = "Bob";
+bool open = false;
+const y = 69;
