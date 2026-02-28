@@ -9,6 +9,32 @@ int main(int argc, char **argv)
         return RUN_FAIL;
     }
 
+    vector<string> args = {};
+    args.reserve(argc);
+
+    for (int i = 0; i < argc; i++)
+    {
+        args.push_back(argv[i]);
+    }
+
+    for (string str : args)
+    {
+        if (str == "--version")
+        {
+            cout << "Pixel 0.1 by unityLeaf7\n";
+            return RUN_SUCCESS;
+        }
+
+        if (str == "--help")
+        {
+            cout << "\nFlag \t\tUse\n----------------------------------\n";
+            cout << "--help  \tShows this page\n";
+            cout << "--version  \tShows Pixel language version\n";
+            cout << "--wiki  \tProvides GitHub wiki for Pixel\n";
+            return RUN_SUCCESS;
+        }
+    }
+
     fs::path source_path = argv[1];
 
     if (!fs::exists(source_path))
@@ -28,7 +54,7 @@ int main(int argc, char **argv)
     lexer::lex_file(source_file);
     lexer::process_tokens();
 
-    cout << "Token Type\tValue\n";
+    cout << "\nToken Type\tValue\n";
     cout << "-----------------------\n";
 
     for (const token &tk : lexer::tokens)
@@ -174,7 +200,6 @@ int main(int argc, char **argv)
         cout << tk.value << "\n";
         cout << "-----------------------\n";
     }
-
 
     source_file.close();
     return RUN_SUCCESS;

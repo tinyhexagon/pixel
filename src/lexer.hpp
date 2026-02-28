@@ -34,7 +34,7 @@ namespace lexer
 
     void push_operator(char _operator, token_type type)
     {
-        if (buffer.length() == 1 && current_char == _operator && next_char != _operator && !in_quotes)
+        if (buffer.length() == 1 && current_char == _operator && next_char != _operator)
         {
             push_token(type, "");
         }

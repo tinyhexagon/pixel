@@ -1,5 +1,4 @@
 int x = -4;
-dec pi  3.14;
-string name = "Bob -9";
+const dec pi  3.14;
+string name = "Elon Musk Melon -42";
 bool open = false;
-const y = -69;
