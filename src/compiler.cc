@@ -26,6 +26,7 @@ int main(int argc, char **argv)
     ifstream source_file(source_path, std::ios::in);
 
     lexer::lex_file(source_file);
+    lexer::process_tokens();
 
     cout << "Token Type\tValue\n";
     cout << "-----------------------\n";
@@ -173,6 +174,7 @@ int main(int argc, char **argv)
         cout << tk.value << "\n";
         cout << "-----------------------\n";
     }
+
 
     source_file.close();
     return RUN_SUCCESS;

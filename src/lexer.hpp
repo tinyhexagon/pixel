@@ -139,6 +139,24 @@ namespace lexer
 
     void process_tokens()
     {
+        std::vector<token> new_tokens;
+        new_tokens.reserve(tokens.size());
+
+        for (int i = 0; i < tokens.size(); i++)
+        {
+            if (i + 1 < tokens.size() && tokens[i].type == token_type::unary && tokens[i + 1].type == token_type::numeric_literal)
+            {
+                std::string value = "-" + tokens[i + 1].value;
+                new_tokens.push_back({.type = token_type::numeric_literal, .value = std::move(value)});
+
+                i++;
+            }
+            else
+            {
+                new_tokens.push_back(tokens[i]);
+            }
+        }
+        tokens = std::move(new_tokens);
     }
 
 };
