@@ -7,9 +7,6 @@
 #define RUN_SUCCESS 0
 #define RUN_FAIL 1
 #define print cout <<
-#define bbreak \
-    ;          \
-    break
 
 using std::cout, std::ifstream, std::vector, std::string;
 

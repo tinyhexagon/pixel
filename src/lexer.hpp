@@ -164,95 +164,139 @@ namespace lexer
         switch (type)
         {
         case token_type::numeric_literal:
-            print "number  \t" bbreak;
+            print "number  \t";
+            break;
         case token_type::string_literal:
-            print "string  \t" bbreak;
+            print "string  \t";
+            break;
         case token_type::plus:
-            print "operator \t+" bbreak;
+            print "operator \t+";
+            break;
         case token_type::dash:
-            print "operator \t-" bbreak;
+            print "operator \t-";
+            break;
         case token_type::asterik:
-            print "operator \t*" bbreak;
+            print "operator \t*";
+            break;
         case token_type::slash:
-            print "operator \t/" bbreak;
+            print "operator \t/";
+            break;
         case token_type::percent:
-            print "operator \t%" bbreak;
+            print "operator \t%";
+            break;
         case token_type::assign:
-            print "operator \t=" bbreak;
+            print "operator \t=";
+            break;
         case token_type::logical_not:
-            print "operator \t!" bbreak;
+            print "operator \t!";
+            break;
         case token_type::identifier:
-            print "identifier \t" bbreak;
+            print "identifier \t";
+            break;
         case token_type::_print:
-            print "keyword \tprint" bbreak;
+            print "keyword \tprint";
+            break;
         case token_type::_int:
-            print "keyword \tint" bbreak;
+            print "keyword \tint";
+            break;
         case token_type::_dec:
-            print "keyword \tdec" bbreak;
+            print "keyword \tdec";
+            break;
         case token_type::_string:
-            print "keyword \tstring" bbreak;
+            print "keyword \tstring";
+            break;
         case token_type::_bool:
-            print "keyword \tbool" bbreak;
+            print "keyword \tbool";
+            break;
         case token_type::_const:
-            print "keyword \tconst" bbreak;
+            print "keyword \tconst";
+            break;
         case token_type::_null:
-            print "keyword \tnull" bbreak;
+            print "keyword \tnull";
+            break;
         case token_type::_if:
-            print "keyword \tif" bbreak;
+            print "keyword \tif";
+            break;
         case token_type::_for:
-            print "keyword \tfor" bbreak;
+            print "keyword \tfor";
+            break;
         case token_type::_while:
-            print "keyword \twhile" bbreak;
+            print "keyword \twhile";
+            break;
         case token_type::_fn:
-            print "keyword \tfn" bbreak;
+            print "keyword \tfn";
+            break;
         case token_type::_true:
-            print "keyword \ttrue" bbreak;
+            print "keyword \ttrue";
+            break;
         case token_type::_false:
-            print "keyword \tfalse" bbreak;
+            print "keyword \tfalse";
+            break;
         case token_type::_return:
-            print "keyword \treturn" bbreak;
+            print "keyword \treturn";
+            break;
         case token_type::semicolon:
-            print "symbol  \t;" bbreak;
+            print "symbol  \t;";
+            break;
         case token_type::colon:
-            print "symbol  \t:" bbreak;
+            print "symbol  \t:";
+            break;
         case token_type::o_paren:
-            print "symbol  \t(" bbreak;
+            print "symbol  \t(";
+            break;
         case token_type::c_paren:
-            print "symbol  \t)" bbreak;
+            print "symbol  \t)";
+            break;
         case token_type::o_curly:
-            print "symbol  \t{" bbreak;
+            print "symbol  \t{";
+            break;
         case token_type::c_curly:
-            print "symbol  \t}" bbreak;
+            print "symbol  \t}";
+            break;
         case token_type::o_brack:
-            print "symbol  \t[" bbreak;
+            print "symbol  \t[";
+            break;
         case token_type::c_brack:
-            print "symbol  \t]" bbreak;
+            print "symbol  \t]";
+            break;
         case token_type::dot:
-            print "symbol  \t." bbreak;
+            print "symbol  \t.";
+            break;
         case token_type::comma:
-            print "symbol  \t," bbreak;
+            print "symbol  \t,";
+            break;
         case token_type::question:
-            print "symbol  \t?" bbreak;
+            print "symbol  \t?";
+            break;
         case token_type::increment:
-            print "operator  \t++" bbreak;
+            print "operator  \t++";
+            break;
         case token_type::decrement:
-            print "operator  \t--" bbreak;
+            print "operator  \t--";
+            break;
         case token_type::greater:
-            print "operator  \t>" bbreak;
+            print "operator  \t>";
+            break;
         case token_type::less:
-            print "operator  \t<" bbreak;
+            print "operator  \t<";
+            break;
         case token_type::greater_eq:
-            print "operator  \t<=" bbreak;
+            print "operator  \t<=";
+            break;
         case token_type::less_eq:
-            print "operator  \t>=" bbreak;
+            print "operator  \t>=";
+            break;
         case token_type::unary:
-            print "unary \t\t(-)" bbreak;
+            print "unary \t\t(-)";
+            break;
 
         case token_type::eof:
-            print "<EOF>\t" bbreak;
+            print "<EOF>\t";
+            break;
 
         default:
-            print "<unknown token type: " << static_cast<int>(type) << ">\t" bbreak;
+            print "<unknown token type: " << static_cast<int>(type) << ">\t";
+            break;
         }
     }
 };
