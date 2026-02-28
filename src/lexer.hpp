@@ -34,7 +34,7 @@ namespace lexer
 
     void push_operator(char _operator, token_type type)
     {
-        if (buffer.length() == 1 && current_char == _operator && next_char != _operator)
+        if (buffer.length() == 1 && current_char == _operator && next_char != _operator && !in_quotes)
         {
             push_token(type, "");
         }
@@ -76,7 +76,7 @@ namespace lexer
                 quotes = 0;
             }
 
-            if (current_char == '-' && isdigit(next_char))
+            if (current_char == '-' && isdigit(next_char) && !in_quotes)
             {
                 push_token(token_type::unary, "");
             }
