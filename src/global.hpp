@@ -34,6 +34,8 @@ enum class token_type
     logical_and,
     logical_or,
 
+    e,
+
     increment,
     decrement,
     greater_eq,
