@@ -40,7 +40,7 @@ namespace lexer
         }
     }
 
-    void push_two_char_operator(char first_char, char second_char, token_type type)
+    void push_twoCharOperator(char first_char, char second_char, token_type type)
     {
         if (buffer.length() == 2 && buffer.front() == first_char && buffer.back() == second_char)
         {
@@ -106,10 +106,10 @@ namespace lexer
             push_operator('<', token_type::less);
             push_operator('!', token_type::logical_not);
 
-            push_two_char_operator('+', '+', token_type::increment);
-            push_two_char_operator('-', '-', token_type::decrement);
-            push_two_char_operator('>', '=', token_type::greater_eq);
-            push_two_char_operator('<', '=', token_type::less_eq);
+            push_twoCharOperator('+', '+', token_type::increment);
+            push_twoCharOperator('-', '-', token_type::decrement);
+            push_twoCharOperator('>', '=', token_type::greater_eq);
+            push_twoCharOperator('<', '=', token_type::less_eq);
 
             push_symbol(";", token_type::semicolon);
             push_symbol(":", token_type::colon);

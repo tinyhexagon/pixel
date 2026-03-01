@@ -5,7 +5,7 @@ int main(int argc, char **argv)
 {
     if (argc < 2)
     {
-        print("\033[31mNo arguments provided.\033[0m\n");
+        print("\n\033[31mNo arguments provided.\033[0m\n\n");
         return RUN_FAIL;
     }
 
@@ -21,23 +21,31 @@ int main(int argc, char **argv)
     {
         if (str == "--version")
         {
-            print("Pixel 0.1 by unityLeaf7\n");
+            print("\nPixel 26.1.10\nMade by unityLeaf7\n\n");
             return RUN_SUCCESS;
         }
 
         if (str == "--help")
         {
             print("\nFlag \t\tUse\n----------------------------------\n");
-            print("--help  \tShows this page\n");
-            print("--version  \tShows Pixel language version\n");
-            print("--wiki  \tProvides GitHub wiki for Pixel\n");
+            print("--help  \Display this page\n");
+            print("--version  \tDisplay compiler version\n");
+            print("--wiki  \tProvide GitHub wiki\n");
+            print("\n");
+            print("--lxout  \tDisplay lexer output\n");
+            print("\n");
             return RUN_SUCCESS;
         }
 
         if (str == "--wiki")
         {
-            print("Pixel Wiki on GitHub: \n");
+            print("Pixel Wiki on GitHub: \n\n");
             return RUN_SUCCESS;
+        }
+
+        if (str == "--lxout")
+        {
+            print_lexerOutput = true;
         }
     }
 
@@ -45,13 +53,13 @@ int main(int argc, char **argv)
 
     if (!fs::exists(source_path))
     {
-        print("\033[31mFile does not exist.\033[0m\n");
+        print("\n\033[31mFile or flag does not exist.\033[0m\n\n");
         return RUN_FAIL;
     }
 
     if (source_path.extension().string() != ".pixel")
     {
-        print("\033[31mWrong file extension.\033[0m\n");
+        print("\n\033[31mWrong file extension.\033[0m\n\n");
         return RUN_FAIL;
     }
 
@@ -59,6 +67,11 @@ int main(int argc, char **argv)
 
     lexer::lex_file(source_file);
     lexer::process_tokens();
+
+    if (!print_lexerOutput)
+    {
+        return RUN_SUCCESS;
+    }
 
     print("\nToken Type\tValue\n");
     print("-----------------------\n");
@@ -69,6 +82,8 @@ int main(int argc, char **argv)
         print("{}\n", tk.value);
         print("-----------------------\n");
     }
+
+    print("\n");
 
     source_file.close();
     return RUN_SUCCESS;

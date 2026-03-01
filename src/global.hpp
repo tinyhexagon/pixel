@@ -12,6 +12,8 @@ using std::ifstream, std::vector, std::string, std::print;
 
 namespace fs = std::filesystem;
 
+bool print_lexerOutput = false;
+
 enum class token_type
 {
     // literals
