@@ -41,6 +41,7 @@ enum class token_type
     decrement,
     greater_eq,
     less_eq,
+    equals,
 
     identifier,
 

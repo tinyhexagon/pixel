@@ -28,7 +28,7 @@ int main(int argc, char **argv)
         if (str == "--help")
         {
             print("\nFlag \t\tUse\n----------------------------------\n");
-            print("--help  \Display this page\n");
+            print("--help  \tDisplay this page\n");
             print("--version  \tDisplay compiler version\n");
             print("--wiki  \tProvide GitHub wiki\n");
             print("\n");

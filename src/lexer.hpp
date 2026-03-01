@@ -34,7 +34,7 @@ namespace lexer
 
     void push_operator(char _operator, token_type type)
     {
-        if (buffer.length() == 1 && current_char == _operator && next_char != _operator)
+        if (buffer.length() == 1 && current_char == _operator && next_char != _operator && next_char != '=')
         {
             push_token(type, "");
         }
@@ -96,6 +96,12 @@ namespace lexer
             push_keyword("false", token_type::_false);
             push_keyword("return", token_type::_return);
 
+            push_twoCharOperator('+', '+', token_type::increment);
+            push_twoCharOperator('-', '-', token_type::decrement);
+            push_twoCharOperator('>', '=', token_type::greater_eq);
+            push_twoCharOperator('<', '=', token_type::less_eq);
+            push_twoCharOperator('=', '=', token_type::equals);
+
             push_operator('+', token_type::plus);
             push_operator('-', token_type::dash);
             push_operator('*', token_type::asterik);
@@ -105,11 +111,6 @@ namespace lexer
             push_operator('>', token_type::greater);
             push_operator('<', token_type::less);
             push_operator('!', token_type::logical_not);
-
-            push_twoCharOperator('+', '+', token_type::increment);
-            push_twoCharOperator('-', '-', token_type::decrement);
-            push_twoCharOperator('>', '=', token_type::greater_eq);
-            push_twoCharOperator('<', '=', token_type::less_eq);
 
             push_symbol(";", token_type::semicolon);
             push_symbol(":", token_type::colon);
@@ -325,6 +326,10 @@ namespace lexer
 
         case token_type::less_eq:
             print("operator \t<=");
+            break;
+
+        case token_type::equals:
+            print("operator \t==");
             break;
 
         case token_type::unary:
