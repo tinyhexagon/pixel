@@ -1,5 +1,6 @@
 #include "global.hpp"
 #include "lexer.hpp"
+#include "parser.hpp"
 
 int main(int argc, char **argv)
 {
@@ -21,7 +22,7 @@ int main(int argc, char **argv)
     {
         if (str == "--version")
         {
-            print("\nPixel 26.1.10\nMade by unityLeaf7\n\n");
+            print("\nPixel 26.1.10, Copyright (C) 2026 unityLeaf7\nPixel comes with ABSOLUTELY NO WARRANTY\n\n");
             return RUN_SUCCESS;
         }
 
