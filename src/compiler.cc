@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 
         if (str == "--wiki")
         {
-            print("Pixel Wiki on GitHub: \n\n");
+            print("\nPixel Wiki on GitHub: https://github.com/unityleaf7/pixel/wiki \n\n");
             return RUN_SUCCESS;
         }
 

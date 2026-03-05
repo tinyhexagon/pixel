@@ -345,4 +345,4 @@ namespace lexer
             break;
         }
     }
-};
+}

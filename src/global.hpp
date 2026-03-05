@@ -82,3 +82,10 @@ struct token
     token_type type;
     string value;
 };
+
+struct expression
+{
+    token left;
+    token _operator;
+    token right;
+};
