@@ -84,8 +84,6 @@ int main(int argc, char **argv)
         print("-----------------------\n");
     }
 
-    print("\n");
-
     source_file.close();
     return RUN_SUCCESS;
 }

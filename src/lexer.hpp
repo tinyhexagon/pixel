@@ -95,6 +95,7 @@ namespace lexer
             push_keyword("true", token_type::_true);
             push_keyword("false", token_type::_false);
             push_keyword("return", token_type::_return);
+            push_keyword("include", token_type::include);
 
             push_twoCharOperator('+', '+', token_type::increment);
             push_twoCharOperator('-', '-', token_type::decrement);

@@ -1,9 +1,11 @@
 #pragma once
 #include "global.hpp"
 
-namespace parser
+class parser
 {
+
+public:
     void parse_expression()
     {
     }
-}
+};

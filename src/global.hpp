@@ -60,6 +60,7 @@ enum class token_type
     _true,
     _false,
     _return,
+    include,
 
     // symbols
     semicolon,
@@ -73,6 +74,10 @@ enum class token_type
     dot,
     comma,
     question,
+
+    // parser tokens
+    start_token,
+    end_token,
 
     eof,
 };
